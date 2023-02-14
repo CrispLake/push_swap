@@ -6,7 +6,7 @@
 /*   By: emajuri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 11:56:17 by emajuri           #+#    #+#             */
-/*   Updated: 2023/02/10 15:31:48 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/02/13 18:29:58 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,13 @@ void	create_stack(char **numbers, t_vars *s_vars)
 	ft_bzero(s_vars, sizeof(t_vars));
 	while (numbers[len] != NULL)
 		len++;
-	s_vars->data = ft_calloc(len * 3, sizeof(int));
+	s_vars->data = ft_calloc(len * 4, sizeof(int));
 	if (!s_vars->data)
 		exit(-1);
 	s_vars->a = s_vars->data;
 	s_vars->b = s_vars->data + len;
 	s_vars->sorted = s_vars->data + len * 2;
+	s_vars->median = s_vars->data + len * 3;
 	while (i < len)
 	{
 		if (check_number(numbers[i]))

@@ -6,7 +6,7 @@
 /*   By: emajuri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 13:00:16 by emajuri           #+#    #+#             */
-/*   Updated: 2023/02/10 14:41:33 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/02/13 18:56:16 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,6 @@ void	push_nb_on_bottom(int *ptr, int nb, int size)
 
 void	rotate_stack(t_vars *s_vars, int *ptr, int size, char stack)
 {
-	if (stack == 'a')
-	{
-		if (size < 2)
-		{
-			ft_printf("rotate_a error\n");
-			return ;
-		}
-	}
-	if (stack == 'b')
-	{
-		if (size < 2)
-		{
-			ft_printf("rotate_b error\n");
-			return ;
-		}
-	}
 	s_vars->operations++;
 	if (stack == 'a')
 		ft_printf("ra\n");
@@ -53,11 +37,6 @@ void	rotate_stack(t_vars *s_vars, int *ptr, int size, char stack)
 
 void	rotate_both(t_vars *s_vars)
 {
-	if (s_vars->size_a < 2 || s_vars->size_b < 2)
-	{
-		ft_printf("rr error\n");
-		return ;
-	}
 	s_vars->operations--;
 	ft_printf("rr\n");
 	rotate_stack(s_vars, s_vars->a, s_vars->size_a, 0);

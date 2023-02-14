@@ -6,11 +6,21 @@
 /*   By: emajuri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:49:07 by emajuri           #+#    #+#             */
-/*   Updated: 2023/02/10 18:06:06 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/02/14 18:23:31 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	get_next(int *ptr, int nb)
+{
+	int	i;
+
+	i = 0;
+	while (ptr[i] != nb)
+		i++;
+	return (i - 1);
+}
 
 int	is_sorted(int *ptr, int size, char stack)
 {
@@ -19,16 +29,18 @@ int	is_sorted(int *ptr, int size, char stack)
 	i = 0;
 	if (stack == 'a')
 	{
-		while (i < size)
+		while (i < size - 1)
 		{
 			if (ptr[i] > ptr[i + 1])
+			{
 				return (0);
+			}
 			i++;
 		}
 	}
 	if (stack == 'b')
 	{
-		while (i < size)
+		while (i < size - 1)
 		{
 			if (ptr[i] < ptr[i + 1])
 				return (0);
@@ -38,18 +50,35 @@ int	is_sorted(int *ptr, int size, char stack)
 	return (1);
 }
 
-int	is_small(int *ptr, int size)
+int	do_median(t_vars *s_vars, int nb)
 {
 	int	i;
-	int	sum;
 
 	i = 0;
-	sum = 0;
-	while (i < size)
-		sum += ptr[i++];
-	if (ptr[0] < sum / size)
-		return (1);
+	while (i < s_vars->size_median)
+	{
+		if (s_vars->median[i] > nb)
+		{
+			push_nb_on_top(&(s_vars->median[i]), nb, s_vars->size_median - i);
+			s_vars->size_median++;
+			return (0);
+		}
+		i++;
+	}
+	s_vars->median[i] = nb;
+	s_vars->size_median++;
 	return (0);
+}
+
+int	is_small(t_vars *s_vars, int *ptr, int size, int nb)
+{
+	int	i;
+
+	i = 0;
+	s_vars->size_median = 0;
+	while (i < size)
+		do_median(s_vars, ptr[i++]);
+	return (nb < s_vars->median[s_vars->size_median / 2]);
 }
 
 void	print_stack(int *ptr, int size, char stack)
@@ -65,45 +94,6 @@ void	print_stack(int *ptr, int size, char stack)
 		ft_printf("%d\n", ptr[i++]);
 }
 
-#include <unistd.h>
-void	test_operations(t_vars *s_vars)
-{
-	int		readval;
-	char	buf[1];
-
-	readval = 1;
-	while(readval)	
-	{
-		print_stack(s_vars->a, s_vars->size_a, 'a');
-		ft_printf("\n");
-		print_stack(s_vars->b, s_vars->size_b, 'b');
-		ft_printf("--%d--\n\n", s_vars->operations);
-		readval = read(0, buf, 2);
-		if (buf[0] == '1')
-			swap_stack(s_vars, s_vars->a, 'a');
-		else if (buf[0] == '2')
-			swap_stack(s_vars, s_vars->b, 'b');
-		else if (buf[0] == '3')
-			swap_ab(s_vars);
-		else if (buf[0] == '4')
-			push_to_stack(s_vars, 'a');
-		else if (buf[0] == '5')
-			push_to_stack(s_vars, 'b');
-		else if (buf[0] == '6')
-			rotate_stack(s_vars, s_vars->a, s_vars->size_a, 'a');
-		else if (buf[0] == '7')
-			rotate_stack(s_vars, s_vars->b, s_vars->size_b, 'b');
-		else if (buf[0] == '8')
-			rotate_both(s_vars);
-		else if (buf[0] == '9')
-			reverse_rotate_stack(s_vars, s_vars->a, s_vars->size_a, 'a');
-		else if (buf[0] == '0')
-			reverse_rotate_stack(s_vars, s_vars->b, s_vars->size_b, 'b');
-		else if (buf[0] == 'a')
-			reverse_rotate_both(s_vars);
-	}
-}
-
 int	main(int argc, char **argv)
 {
 	t_vars	s_vars;
@@ -111,6 +101,9 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (-1);
 	create_stack(argv + 1, &s_vars);
-	test_operations(&s_vars);
+	sort(&s_vars);
+//	ft_printf("operations: %d\n", s_vars.operations);
+//	print_stack(s_vars.a, s_vars.size_a, 'a');
+	free(s_vars.data);
 	return (0);
 }

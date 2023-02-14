@@ -6,7 +6,7 @@
 #    By: emajuri <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/24 16:39:22 by emajuri           #+#    #+#              #
-#    Updated: 2023/02/10 14:21:48 by emajuri          ###   ########.fr        #
+#    Updated: 2023/02/13 15:17:30 by emajuri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,11 @@ NAME = push_swap
 
 LIBFT = libft.a
 
-SRC = $(NAME).c operations.c operations2.c stack_creation.c
+SRC = $(NAME).c operations.c operations2.c stack_creation.c sorting.c
 
 OSRC = $(SRC:%.c=%.o)
 
-WWW = -Wall -Wextra -Werror
+WWW = -Wall -Wextra -Werror -g
 
 .PHONY: all clean fclean re
 
