@@ -1,48 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.c                                       :+:      :+:    :+:   */
+/*   swap_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emajuri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/09 16:42:32 by emajuri           #+#    #+#             */
-/*   Updated: 2023/02/16 19:23:13 by emajuri          ###   ########.fr       */
+/*   Created: 2023/02/16 18:24:25 by emajuri           #+#    #+#             */
+/*   Updated: 2023/02/16 19:57:56 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_nb_on_top(int *ptr, int nb, int size)
+void	swap_stack(int *ptr)
 {
-	while (size)
-	{
-		ptr[size] = ptr[size - 1];
-		size--;
-	}
-	ptr[size] = nb;
+	int	save;
+
+	save = ptr[0];
+	ptr[0] = ptr[1];
+	ptr[1] = save;
 }
 
-void	remove_nb_on_top(int *ptr, int size)
+void	sa(t_vars *s_vars)
 {
-	int	i;
-
-	i = 0;
-	while (i < size - 1)
-	{
-		ptr[i] = ptr[i + 1];
-		i++;
-	}
+	swap_stack(s_vars->a);	
+	ft_printf("sa\n");
 }
 
-void	push_nb_on_bottom(int *ptr, int nb, int size)
+void	sb(t_vars *s_vars)
 {
-	int	i;
+	swap_stack(s_vars->b);
+	ft_printf("sb\n");
+}
 
-	i = 0;
-	while (i < size - 1)
-	{
-		ptr[i] = ptr[i + 1];
-		i++;
-	}
-	ptr[i] = nb;
+void	swap_ab(t_vars *s_vars)
+{
+	swap_stack(s_vars->a);
+	swap_stack(s_vars->b);
+	ft_printf("ss\n");
 }

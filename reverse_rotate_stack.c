@@ -1,48 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.c                                       :+:      :+:    :+:   */
+/*   reverse_rotate_stack.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emajuri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/09 16:42:32 by emajuri           #+#    #+#             */
-/*   Updated: 2023/02/16 19:23:13 by emajuri          ###   ########.fr       */
+/*   Created: 2023/02/16 19:15:24 by emajuri           #+#    #+#             */
+/*   Updated: 2023/02/16 19:42:38 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_nb_on_top(int *ptr, int nb, int size)
+void	rra(t_vars *s_vars)
 {
-	while (size)
-	{
-		ptr[size] = ptr[size - 1];
-		size--;
-	}
-	ptr[size] = nb;
+	ft_printf("rra\n");
+	push_nb_on_top(s_vars->a, s_vars->a[s_vars->size_a - 1], s_vars->size_a);
 }
 
-void	remove_nb_on_top(int *ptr, int size)
+void	rrb(t_vars *s_vars)
 {
-	int	i;
-
-	i = 0;
-	while (i < size - 1)
-	{
-		ptr[i] = ptr[i + 1];
-		i++;
-	}
+	ft_printf("rrb\n");
+	push_nb_on_top(s_vars->b, s_vars->b[s_vars->size_b - 1], s_vars->size_b);
 }
 
-void	push_nb_on_bottom(int *ptr, int nb, int size)
+void	rrr(t_vars *s_vars)
 {
-	int	i;
-
-	i = 0;
-	while (i < size - 1)
-	{
-		ptr[i] = ptr[i + 1];
-		i++;
-	}
-	ptr[i] = nb;
+	ft_printf("rrr\n");
+	push_nb_on_top(s_vars->a, s_vars->a[s_vars->size_a - 1], s_vars->size_a);
+	push_nb_on_top(s_vars->b, s_vars->b[s_vars->size_b - 1], s_vars->size_b);
 }

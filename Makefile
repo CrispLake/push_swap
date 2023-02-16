@@ -6,7 +6,7 @@
 #    By: emajuri <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/24 16:39:22 by emajuri           #+#    #+#              #
-#    Updated: 2023/02/13 15:17:30 by emajuri          ###   ########.fr        #
+#    Updated: 2023/02/16 19:42:52 by emajuri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME = push_swap
 
 LIBFT = libft.a
 
-SRC = $(NAME).c operations.c operations2.c stack_creation.c sorting.c
+SRC = $(NAME).c operations.c stack_creation.c sorting.c push_stack.c \
+	  swap_stack.c rotate_stack.c reverse_rotate_stack.c
 
 OSRC = $(SRC:%.c=%.o)
 

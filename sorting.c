@@ -6,7 +6,7 @@
 /*   By: emajuri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 17:53:15 by emajuri           #+#    #+#             */
-/*   Updated: 2023/02/14 18:23:29 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/02/16 21:37:40 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	push_all(t_vars *s_vars)
 {
 	while (s_vars->size_b > 0)
-		push_to_stack(s_vars, 'a');
+		pa(s_vars);
 }
 
 int	find_next_index(int next, int *ptr)
@@ -52,11 +52,11 @@ void	move_number(t_vars *s_vars, int nb)
 	i = find_next_index(nb, s_vars->b);
 	if (decide_rotate(i, s_vars->size_b))
 		while (s_vars->b[0] != nb)
-			rotate_stack(s_vars, s_vars->b, s_vars->size_b, 'b');
+			rb(s_vars);
 	else
 		while (s_vars->b[0] != nb)
-			reverse_rotate_stack(s_vars, s_vars->b, s_vars->size_b, 'b');
-	push_to_stack(s_vars, 'a');
+			rrb(s_vars);
+	pa(s_vars);
 }
 
 void	move_next(t_vars *s_vars, int next, int next2)
@@ -77,7 +77,7 @@ void	move_next(t_vars *s_vars, int next, int next2)
 	{
 		move_number(s_vars, next2);
 		move_number(s_vars, next);
-		swap_stack(s_vars, s_vars->a, 'a');
+		sa(s_vars);
 	}
 }
 
@@ -89,42 +89,76 @@ void	sort_stack_b(t_vars *s_vars)
 	{
 		i = get_next(s_vars->sorted, s_vars->a[0]);
 		if (s_vars->b[0] == s_vars->sorted[i])
-			push_to_stack(s_vars, 'a');
+			pa(s_vars);
 		else if (s_vars->b[1] == s_vars->sorted[i])
 		{
 			if (is_small(s_vars, s_vars->b, s_vars->size_b, s_vars->b[0]))
-				rotate_stack(s_vars, s_vars->b, s_vars->size_b, 'b');
+				rb(s_vars);
 			else
-				swap_stack(s_vars, s_vars->b, 'b');
+				sb(s_vars);
 		}
 		else
 			move_next(s_vars, s_vars->sorted[i], s_vars->sorted[i - 1]);
 	}
 }
 
-void	sort(t_vars *s_vars)
+void	create_partitions(t_vars *s_vars, int size)
 {
-	while (!is_sorted(s_vars->a, s_vars->size_a, 'a') || s_vars->size_a != 2)
+	int	count;
+	int	median_a;
+	int	median_b;
+	int	i;
+	(void)size;
+
+	count = s_vars->size_a / 2;
+	median_a = return_median(s_vars, s_vars->a, s_vars->size_a);
+	median_b = get_median_b(s_vars, s_vars->a, s_vars->size_a, median_a);
+//	ft_printf("count: %d\nmedian_a: %d\nmedian_b: %d\n", count, median_a, median_b);
+	i = 0;
+	while (count)
 	{
-		if (s_vars->size_a == 2)
-			swap_stack(s_vars, s_vars->a, 'a');
-		else if (s_vars->size_a > 2 && is_small(s_vars, s_vars->a, s_vars->size_a, s_vars->a[0]))
+//		print_stack(s_vars->a, s_vars->size_a, 'a');
+		if (s_vars->a[0] < median_a)
 		{
-			push_to_stack(s_vars, 'b');
-			if (s_vars->size_b > 1)
-			{
-				if (is_small(s_vars, s_vars->b, s_vars->size_b, s_vars->b[0]))
-					rotate_stack(s_vars, s_vars->b, s_vars->size_b, 'b');
-				else if (s_vars->b[0] < s_vars->b[1])
-					swap_stack(s_vars, s_vars->b, 'b');
-			}
+			pb(s_vars);
+			if (s_vars->b[0] < median_b)
+				rb(s_vars);
+			else if (s_vars->b[0] < s_vars->b[1])
+				sb(s_vars);
+			count--;
 		}
 		else
-			rotate_stack(s_vars, s_vars->a, s_vars->size_a, 'a');
+			ra(s_vars);
 	}
-	if (s_vars->size_b > 0)
+}
+
+int	index_of_big(int nb1, int nb2, int nb3)
+{
+	if (nb1 > nb2)
 	{
-		sort_stack_b(s_vars);
-		push_all(s_vars);
+		if (nb1 > nb3)
+			return (0);
 	}
+	else if (nb2 > nb3)
+		return (1);
+	return (2);
+}
+
+void	sort_a(t_vars *s_vars)
+{
+	int	big;
+
+	if (s_vars->size_a == 2)
+	{
+		if (s_vars->a[0] > s_vars->a[1])
+			sa(s_vars);
+		return ;
+	}
+	big = index_of_big(s_vars->a[0], s_vars->a[1], s_vars->a[2]);
+	if (big == 0)
+		ra(s_vars);
+	else if (big == 1)
+		rra(s_vars);
+	if (s_vars->a[0] > s_vars->a[1])
+		sa(s_vars);
 }
