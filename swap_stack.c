@@ -6,7 +6,7 @@
 /*   By: emajuri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:24:25 by emajuri           #+#    #+#             */
-/*   Updated: 2023/02/16 19:57:56 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/02/17 17:17:43 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,24 @@ void	swap_stack(int *ptr)
 
 void	sa(t_vars *s_vars)
 {
-	swap_stack(s_vars->a);	
+	if (s_vars->size_a < 2)
+		return ;
+	swap_stack(s_vars->a);
 	ft_printf("sa\n");
 }
 
 void	sb(t_vars *s_vars)
 {
+	if (s_vars->size_b < 2)
+		return ;
 	swap_stack(s_vars->b);
 	ft_printf("sb\n");
 }
 
 void	swap_ab(t_vars *s_vars)
 {
+	if (s_vars->size_a < 2 || s_vars->size_b < 2)
+		return ;
 	swap_stack(s_vars->a);
 	swap_stack(s_vars->b);
 	ft_printf("ss\n");

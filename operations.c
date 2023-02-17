@@ -6,7 +6,7 @@
 /*   By: emajuri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 16:42:32 by emajuri           #+#    #+#             */
-/*   Updated: 2023/02/16 19:23:13 by emajuri          ###   ########.fr       */
+/*   Updated: 2023/02/17 17:14:35 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,10 @@ void	push_nb_on_bottom(int *ptr, int nb, int size)
 		i++;
 	}
 	ptr[i] = nb;
+}
+
+void	push_all(t_vars *s_vars)
+{
+	while (s_vars->size_b > 0)
+		pa(s_vars);
 }
