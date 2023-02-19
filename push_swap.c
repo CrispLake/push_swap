@@ -85,7 +85,7 @@ int	main(int argc, char **argv)
 	t_vars	s_vars;
 
 	if (argc < 2)
-		return (-1);
+		return (0);
 	ft_bzero(&s_vars, sizeof(t_vars));
 	if (argc == 2)
 	{

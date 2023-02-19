@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 void	*ft_realloc(void *ptr, size_t size, size_t len)
 {
 	char	*new;
@@ -22,12 +24,12 @@ void	*ft_realloc(void *ptr, size_t size, size_t len)
 		return (NULL);
 	if (!tmp)
 	{
-		tmp = malloc(size);
+		tmp = ft_calloc(size, 1);
 		if (!tmp)
 			return (NULL);
 		return (tmp);
 	}
-	new = malloc(size);
+	new = ft_calloc(size, 1);
 	if (!new)
 		return (NULL);
 	while (len--)

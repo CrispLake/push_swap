@@ -1,28 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putull_base_fd.c                                :+:      :+:    :+:   */
+/*   operations_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emajuri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/28 09:58:30 by emajuri           #+#    #+#             */
-/*   Updated: 2022/12/05 13:31:39 by emajuri          ###   ########.fr       */
+/*   Created: 2023/02/09 16:42:32 by emajuri           #+#    #+#             */
+/*   Updated: 2023/02/17 17:14:35 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_putull_base_fd(unsigned long long n, int base, int fd)
+void	push_nb_on_top(int *ptr, int nb, int size)
 {
-	const char	*str = "0123456789abcdefg";
-
-	if (base < 2 || base > 16)
-		return ;
-	if (n > (unsigned long long)(base - 1))
+	while (size)
 	{
-		ft_putull_base_fd(n / base, base, fd);
-		ft_putull_base_fd(n % base, base, fd);
+		ptr[size] = ptr[size - 1];
+		size--;
 	}
-	if (n <= (unsigned long long)(base - 1))
-		ft_putchar_fd(str[n], fd);
+	ptr[size] = nb;
+}
+
+void	remove_nb_on_top(int *ptr, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size - 1)
+	{
+		ptr[i] = ptr[i + 1];
+		i++;
+	}
+}
+
+void	push_nb_on_bottom(int *ptr, int nb, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size - 1)
+	{
+		ptr[i] = ptr[i + 1];
+		i++;
+	}
+	ptr[i] = nb;
 }

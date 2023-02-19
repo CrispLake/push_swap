@@ -13,7 +13,11 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 2048
+# endif
 # include <stdlib.h>
+# include <unistd.h>
 
 typedef struct s_list
 {
@@ -43,6 +47,7 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int		ft_atoi(const char *str);
 void	*ft_calloc(size_t count, size_t size);
+void	*ft_realloc(void *ptr, size_t size, size_t len);
 char	*ft_strdup(const char *s1);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
@@ -73,5 +78,9 @@ int		ft_printf(const char *str, ...);
 int		ft_printf_fd(int fd, const char *str, ...);
 char	**ft_split_quote(const char *str, int delim);
 char	**ft_split_one_malloc(const char *str, int delim);
+char	*ft_get_next_line(int fd);
+size_t	ft_strlcpy_mod(char *dst, const char *src, size_t dstsize);
+char	*ft_strjoin_free(char const *s1, char const *s2, size_t buffer_len, \
+					  size_t line_len);
 
 #endif

@@ -1,47 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_stack.c                                       :+:      :+:    :+:   */
+/*   reverse_rotate_stack_bonus.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emajuri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 18:24:25 by emajuri           #+#    #+#             */
-/*   Updated: 2023/02/17 17:17:43 by emajuri          ###   ########.fr       */
+/*   Created: 2023/02/16 19:15:24 by emajuri           #+#    #+#             */
+/*   Updated: 2023/02/17 16:43:34 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap_stack(int *ptr)
-{
-	int	save;
-
-	save = ptr[0];
-	ptr[0] = ptr[1];
-	ptr[1] = save;
-}
-
-void	sa(t_vars *s_vars)
+void	brra(t_vars *s_vars)
 {
 	if (s_vars->size_a < 2)
 		return ;
-	swap_stack(s_vars->a);
-	ft_printf("sa\n");
+	push_nb_on_top(s_vars->a, s_vars->a[s_vars->size_a - 1], s_vars->size_a);
 }
 
-void	sb(t_vars *s_vars)
+void	brrb(t_vars *s_vars)
 {
 	if (s_vars->size_b < 2)
 		return ;
-	swap_stack(s_vars->b);
-	ft_printf("sb\n");
+	push_nb_on_top(s_vars->b, s_vars->b[s_vars->size_b - 1], s_vars->size_b);
 }
 
-void	ss(t_vars *s_vars)
+void	brrr(t_vars *s_vars)
 {
 	if (s_vars->size_a < 2 || s_vars->size_b < 2)
 		return ;
-	swap_stack(s_vars->a);
-	swap_stack(s_vars->b);
-	ft_printf("ss\n");
+	push_nb_on_top(s_vars->a, s_vars->a[s_vars->size_a - 1], s_vars->size_a);
+	push_nb_on_top(s_vars->b, s_vars->b[s_vars->size_b - 1], s_vars->size_b);
 }

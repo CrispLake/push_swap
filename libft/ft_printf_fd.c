@@ -12,7 +12,6 @@
 
 #include <stdarg.h>
 #include "libft.h"
-#include <unistd.h>
 
 static int	putull_base(unsigned long long n, int base, int caps, int fd)
 {
@@ -29,7 +28,7 @@ static int	putull_base(unsigned long long n, int base, int caps, int fd)
 		count += putull_base(n / base, base, caps, fd);
 		count += putull_base(n % base, base, caps, fd);
 	}
-	if (n <= (unsigned int)(base - 1) && n >= 0)
+	if (n <= (unsigned int)(base - 1))
 	{
 		ft_putchar_fd(str[n], fd);
 		return (++count);

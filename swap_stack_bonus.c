@@ -1,28 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putull_base_fd.c                                :+:      :+:    :+:   */
+/*   swap_stack_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emajuri <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/28 09:58:30 by emajuri           #+#    #+#             */
-/*   Updated: 2022/12/05 13:31:39 by emajuri          ###   ########.fr       */
+/*   Created: 2023/02/16 18:24:25 by emajuri           #+#    #+#             */
+/*   Updated: 2023/02/17 17:17:43 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_putull_base_fd(unsigned long long n, int base, int fd)
+void	swap_stack(int *ptr)
 {
-	const char	*str = "0123456789abcdefg";
+	int	save;
 
-	if (base < 2 || base > 16)
+	save = ptr[0];
+	ptr[0] = ptr[1];
+	ptr[1] = save;
+}
+
+void	bsa(t_vars *s_vars)
+{
+	if (s_vars->size_a < 2)
 		return ;
-	if (n > (unsigned long long)(base - 1))
-	{
-		ft_putull_base_fd(n / base, base, fd);
-		ft_putull_base_fd(n % base, base, fd);
-	}
-	if (n <= (unsigned long long)(base - 1))
-		ft_putchar_fd(str[n], fd);
+	swap_stack(s_vars->a);
+}
+
+void	bsb(t_vars *s_vars)
+{
+	if (s_vars->size_b < 2)
+		return ;
+	swap_stack(s_vars->b);
+}
+
+void	bss(t_vars *s_vars)
+{
+	if (s_vars->size_a < 2 || s_vars->size_b < 2)
+		return ;
+	swap_stack(s_vars->a);
+	swap_stack(s_vars->b);
 }

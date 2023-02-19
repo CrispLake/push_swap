@@ -57,13 +57,11 @@ void	partitions_half(t_vars *s_vars)
 	int	count;
 	int	median_a;
 	int	median_b;
-	int	i;
 
 	count = s_vars->size_a / 2;
 	create_median(s_vars, s_vars->a, s_vars->size_a);
 	median_a = s_vars->median[s_vars->size_median / 2];
 	median_b = s_vars->median[s_vars->size_median / 4];
-	i = 0;
 	while (count)
 	{
 		if (s_vars->a[0] < median_a)
