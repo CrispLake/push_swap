@@ -13,6 +13,9 @@
 #ifndef PUSH_SWAP_BONUS_H
 # define PUSH_SWAP_BONUS_H
 
+#include "push_swap.h"
+#include <unistd.h>
+
 typedef struct s_vec
 {
 	char	*operations;
@@ -47,5 +50,9 @@ void	brra(t_vars *s_vars);
 void	brrb(t_vars *s_vars);
 void	brrr(t_vars *s_vars);
 void	create_stack_bonus(char **numbers, t_vars *s_vars);
+void	exit_on_error(t_vars *s_vars, char *operations);
+int		check_rotate(char *line);
+int		check_operation(char *line);
+void	add_operation(t_vars *s_vars, t_vec *vec, int operation);
 
 #endif

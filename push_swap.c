@@ -95,7 +95,7 @@ int	main(int argc, char **argv)
 	}
 	else
 		create_stack(argv + 1, &s_vars);
-	while (s_vars.size_a > 60)
+	while (s_vars.size_a > 120)
 		partitions_size(&s_vars, 60);
 	while (s_vars.size_a > 3)
 		partitions_half(&s_vars);

@@ -6,7 +6,7 @@
 #    By: emajuri <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/24 16:39:22 by emajuri           #+#    #+#              #
-#    Updated: 2023/02/17 17:12:12 by emajuri          ###   ########.fr        #
+#    Updated: 2023/02/20 12:00:18 by emajuri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ OSRC = $(SRC:%.c=%.o)
 
 BSRC = checker_bonus.c operations_bonus.c stack_creation_bonus.c \
 	   push_stack_bonus.c swap_stack_bonus.c rotate_stack_bonus.c \
-	   reverse_rotate_stack_bonus.c
+	   reverse_rotate_stack_bonus.c checker_helpers_bonus.c
 
 BOSRC = $(BSRC:%.c=%.o)
 
