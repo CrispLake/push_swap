@@ -44,11 +44,11 @@ In general, you will be pushing almost all numbers from stack `A` to `B` once an
 
 The idea is to sort the numbers into `B` with the smallest numbers in the centre, and then placing the next partition of n smallest numbers on the bottom and top of the stack.
 
-Visualization of `B` stack after everything is moved there (https://github.com/o-reo/push_swap_visualizer)
+Visualization of `B` stack after everything is moved into `B` (https://github.com/o-reo/push_swap_visualizer)
 
 ![txt](Bstack.png)
 
-### Step 1.1: Moving numbers from `A` to `B`
+### Step 1: Moving numbers from `A` to `B`
 
 How it works is by taking partitions from `A` and moving them to `B`. The partition will always have the next n smallest numbers from stack `A`.
 
@@ -70,7 +70,7 @@ If the number is from the bigger half it stays on top of `B`. Also, if the 2nd t
 
 Repeat step 1.2 until all numbers of the partition are in `B`.
 
-Repeat step 1.1 and 1.2 until the `A` stack has 3 or less numbers left.
+Repeat step 1 until the `A` stack has 3 or less numbers left.
 
 Sort the last 2 or 3 numbers in `A`.
 
