@@ -6,7 +6,7 @@
 #    By: emajuri <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/24 16:39:22 by emajuri           #+#    #+#              #
-#    Updated: 2023/02/20 12:00:18 by emajuri          ###   ########.fr        #
+#    Updated: 2023/03/15 15:53:28 by emajuri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,12 +31,10 @@ WWW = -Wall -Wextra -Werror
 
 .PHONY: all clean fclean re bonus
 
-all: $(LIBFT) $(NAME)
-
-$(LIBFT):
-	make -C libft
+all: $(NAME)
 
 $(NAME): $(OSRC)
+	make -C libft
 	cc $(WWW) $(OSRC) -L libft -lft -o $(NAME)
 
 clean:
@@ -52,7 +50,8 @@ fclean: clean
 
 re: fclean all
 
-bonus: $(LIBFT) $(BONUS_NAME)
+bonus: $(BONUS_NAME)
 
 $(BONUS_NAME): $(BOSRC)
+	make -C libft
 	cc $(WWW) $(BOSRC) -L libft -lft -o $(BONUS_NAME)
