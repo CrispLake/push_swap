@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 16:42:32 by emajuri           #+#    #+#             */
-/*   Updated: 2023/02/17 17:14:35 by emajuri          ###   ########.fr       */
+/*   Updated: 2024/04/12 18:42:14 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,18 @@ void	push_nb_on_bottom(int *ptr, int nb, int size)
 	ptr[i] = nb;
 }
 
-void	push_all(t_vars *s_vars)
+void	push_all(t_vars *s_vars, int storage_size)
 {
 	while (s_vars->size_b > 0)
-		pa(s_vars);
+	{
+		if (storage_size && s_vars->a[s_vars->size_a - 1] > s_vars->b[0])
+		{
+			rra(s_vars);
+			storage_size--;
+		}
+		else
+			pa(s_vars);
+	}
+	while (storage_size--)
+		rra(s_vars);
 }

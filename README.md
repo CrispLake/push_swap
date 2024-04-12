@@ -96,3 +96,19 @@ If the 2nd biggest requires less moves:
 Repeat step 2 until all the numbers are in `A`.
 
 Good job 👍. You have sorted the stack.
+
+## Optimization for step 2
+
+To optimize the moving of the numbers back to `B` efficiently we are gonna use `A` stacks bottom as temporary storage.
+
+When looking for the next biggest number in `B` and it is not the topmost number in the stack, we can then do the following.
+
+Check if storage is empty OR if the top number is bigger than the last number placed at the bottom of `A`:
+    - Push to `A`
+    - Rotate `A`
+
+Then everytime we are looking for the biggest or the second biggest in `B` we have to check if they are at the bottom of `A`.
+
+If the biggest is at the bottom of `A` we can just reverse rotate `A` and if it is the second biggest we can just move the biggest to `A` and then reverse rotate `A`.
+
+And if `B` is empty check that the storage is empty. If not just reverse rotate all numbers from storage.

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:49:07 by emajuri           #+#    #+#             */
-/*   Updated: 2023/02/17 17:14:42 by emajuri          ###   ########.fr       */
+/*   Updated: 2024/04/12 18:40:00 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void	create_median(t_vars *s_vars, int *ptr, int size)
 int	main(int argc, char **argv)
 {
 	t_vars	s_vars;
+	int storage_size;
 
 	if (argc < 2)
 		return (0);
@@ -100,8 +101,8 @@ int	main(int argc, char **argv)
 	while (s_vars.size_a > 3)
 		partitions_half(&s_vars);
 	sort_a(&s_vars);
-	sort_stack_b(&s_vars);
-	push_all(&s_vars);
+	storage_size = sort_stack_b(&s_vars);
+	push_all(&s_vars, storage_size);
 	free(s_vars.data);
 	return (0);
 }

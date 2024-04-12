@@ -1,32 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sorting.c                                          :+:      :+:    :+:   */
+/*   sort_a.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 17:53:15 by emajuri           #+#    #+#             */
-/*   Updated: 2023/02/17 17:35:22 by emajuri          ###   ########.fr       */
+/*   Updated: 2024/04/12 17:47:17 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	sort_stack_b(t_vars *s_vars)
-{
-	int	i;
-
-	while (!is_sorted(s_vars->b, s_vars->size_b, 'b'))
-	{
-		i = get_next(s_vars->sorted, s_vars->a[0]);
-		if (s_vars->b[0] == s_vars->sorted[i])
-			pa(s_vars);
-		else if (s_vars->b[1] == s_vars->sorted[i])
-			sb(s_vars);
-		else
-			move_next(s_vars, s_vars->sorted[i], s_vars->sorted[i - 1]);
-	}
-}
 
 void	partitions_size(t_vars *s_vars, int size)
 {

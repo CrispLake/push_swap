@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: emajuri <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/24 16:39:22 by emajuri           #+#    #+#              #
-#    Updated: 2023/03/15 15:53:28 by emajuri          ###   ########.fr        #
+#    Updated: 2024/04/12 17:47:03 by emajuri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,39 +14,62 @@ NAME = push_swap
 
 BONUS_NAME = checker
 
-LIBFT = libft.a
+LIBFT = libft/libft.a
 
-SRC = $(NAME).c operations.c stack_creation.c sorting.c push_stack.c \
-	  swap_stack.c rotate_stack.c reverse_rotate_stack.c b_helpers.c
+SRCDIR = ./src
+OBJDIR = ./obj
 
-OSRC = $(SRC:%.c=%.o)
+SRC =\
+	main.c\
+	operations.c\
+	stack_creation.c\
+	sort_a.c\
+	sort_b.c\
+	push_stack.c\
+	swap_stack.c\
+	rotate_stack.c\
+	reverse_rotate_stack.c\
+	b_helpers.c
 
-BSRC = checker_bonus.c operations_bonus.c stack_creation_bonus.c \
-	   push_stack_bonus.c swap_stack_bonus.c rotate_stack_bonus.c \
-	   reverse_rotate_stack_bonus.c checker_helpers_bonus.c
+OBJ = $(addprefix obj/,$(SRC:%.c=%.o))
 
-BOSRC = $(BSRC:%.c=%.o)
+BSRC =\
+	checker_bonus.c\
+	operations_bonus.c\
+	stack_creation_bonus.c\
+	push_stack_bonus.c\
+	swap_stack_bonus.c\
+	rotate_stack_bonus.c\
+	reverse_rotate_stack_bonus.c\
+	checker_helpers_bonus.c
 
-WWW = -Wall -Wextra -Werror
+BOBJ = $(addprefix obj/,$(BSRC:%.c=%.o))
+
+CC = cc
+CFLAGS = -Wall -Werror -Wextra
+LDFLAGS = -Llibft -lft
 
 .PHONY: all clean fclean re bonus
 
-all: $(NAME)
+all: $(NAME) 
 
-$(NAME): $(OSRC)
+$(LIBFT):
 	make -C libft
-	cc $(WWW) $(OSRC) -L libft -lft -o $(NAME)
+
+$(NAME): $(OBJ) $(LIBFT)
+	$(CC) $(LDFLAGS) -o $(NAME) $(OBJ) 
+
+$(OBJDIR)/%.o: $(SRCDIR)/%.c
+	@$(shell [ ! -d $(@D) ] && mkdir -p $(@D))
+	$(CC) $(CFLAGS) -c $< -o $@ 
 
 clean:
-	rm -f $(OSRC) $(BOSRC)
+	/bin/rm -rf $(OBJDIR)
 	make clean -C libft
 
 fclean: clean
-	rm -f $(NAME) $(BONUS_NAME)
-	rm -f libft/$(LIBFT)
-
-%.o: %.c
-	cc $(WWW) -c -o $@ $^ 
+	/bin/rm -f $(NAME)
+	rm -f $(LIBFT)
 
 re: fclean all
 
@@ -54,4 +77,4 @@ bonus: $(BONUS_NAME)
 
 $(BONUS_NAME): $(BOSRC)
 	make -C libft
-	cc $(WWW) $(BOSRC) -L libft -lft -o $(BONUS_NAME)
+	cc $(CFLAGS) $(BOSRC) $(LDFLAGS) -o $(BONUS_NAME)
