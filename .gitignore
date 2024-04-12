@@ -1,0 +1,4 @@
+*.o
+push_swap
+libft/libft.a
+tester/ops.log
