@@ -6,13 +6,13 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 17:47:08 by emajuri           #+#    #+#             */
-/*   Updated: 2024/04/12 18:08:42 by emajuri          ###   ########.fr       */
+/*   Updated: 2024/04/12 18:38:41 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_stack_b(t_vars *s_vars)
+int	sort_stack_b(t_vars *s_vars)
 {
 	int	next_i;
     int storage_size = 0;
@@ -39,5 +39,5 @@ void	sort_stack_b(t_vars *s_vars)
 		else
 			move_next(s_vars, s_vars->sorted[next_i], s_vars->sorted[next_i - 1]);
 	}
-    // return storage_size;
+    return storage_size;
 }

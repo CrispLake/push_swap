@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:51:11 by emajuri           #+#    #+#             */
-/*   Updated: 2024/04/12 17:44:54 by emajuri          ###   ########.fr       */
+/*   Updated: 2024/04/12 18:40:10 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	rr(t_vars *s_vars);
 void	rra(t_vars *s_vars);
 void	rrb(t_vars *s_vars);
 void	rrr(t_vars *s_vars);
-void	sort_stack_b(t_vars *s_vars);
+int		sort_stack_b(t_vars *s_vars);
 void	push_nb_on_top(int *ptr, int nb, int size);
 void	push_nb_on_bottom(int *ptr, int nb, int size);
 void	push_nb_on_top(int *ptr, int nb, int size);
@@ -57,6 +57,6 @@ void	move_number(t_vars *s_vars, int nb);
 int		decide_rotate(int i, int size);
 int		moves_for_next(int next_i, int size);
 int		find_next_index(int next, int *ptr);
-void	push_all(t_vars *s_vars);
+void	push_all(t_vars *s_vars, int storage_size);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 17:09:58 by emajuri           #+#    #+#             */
-/*   Updated: 2024/04/12 18:07:42 by emajuri          ###   ########.fr       */
+/*   Updated: 2024/04/12 18:33:30 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,11 @@ void	move_next(t_vars *s_vars, int next, int next2)
 	int	next_i2;
 
 	next_i = find_next_index(next, s_vars->b);
+	if (next2 == s_vars->a[s_vars->size_a - 1])
+	{
+		move_number(s_vars, next);
+		return;
+	}
 	next_i2 = find_next_index(next2, s_vars->b);
 	moves1 = moves_for_next(next_i, s_vars->size_b);
 	moves2 = moves_for_next(next_i2, s_vars->size_b);
