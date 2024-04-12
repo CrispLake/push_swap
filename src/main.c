@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emajuri <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: emajuri <emajuri@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:49:07 by emajuri           #+#    #+#             */
-/*   Updated: 2023/02/17 17:14:42 by emajuri          ###   ########.fr       */
+/*   Updated: 2024/04/12 18:01:21 by emajuri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void	create_median(t_vars *s_vars, int *ptr, int size)
 int	main(int argc, char **argv)
 {
 	t_vars	s_vars;
+	// int storage_size;
 
 	if (argc < 2)
 		return (0);
