@@ -47,17 +47,17 @@ BOBJ = $(addprefix obj/,$(BSRC:%.c=%.o))
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
-LDFLAGS = -Llibft -lft
+LDFLAGS = -L libft -lft
 
 .PHONY: all clean fclean re bonus
 
-all: $(NAME) 
+all: $(LIBFT) $(NAME) 
 
 $(LIBFT):
 	make -C libft
 
-$(NAME): $(OBJ) $(LIBFT)
-	$(CC) $(LDFLAGS) -o $(NAME) $(OBJ) 
+$(NAME): $(OBJ)
+	$(CC) -o $(NAME) $(OBJ) $(LDFLAGS)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	@$(shell [ ! -d $(@D) ] && mkdir -p $(@D))
@@ -73,8 +73,7 @@ fclean: clean
 
 re: fclean all
 
-bonus: $(BONUS_NAME)
+bonus: $(LIBFT) $(BONUS_NAME)
 
-$(BONUS_NAME): $(BOSRC)
-	make -C libft
-	cc $(CFLAGS) $(BOSRC) $(LDFLAGS) -o $(BONUS_NAME)
+$(BONUS_NAME): $(BOBJ)
+	cc -o $(BONUS_NAME) $(BOBJ) $(LDFLAGS)
