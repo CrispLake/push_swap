@@ -53,7 +53,7 @@ LDFLAGS = -L libft -lft -I libft
 
 .PHONY: all clean fclean re bonus
 
-all: $(LIBFT) $(NAME) 
+all: $(LIBFT) $(NAME) bonus
 
 $(LIBFT):
 	make -C libft
@@ -81,3 +81,9 @@ bonus: $(LIBFT) $(BONUS_NAME)
 
 $(BONUS_NAME): $(BOBJ)
 	cc -o $(BONUS_NAME) $(BOBJ) $(LDFLAGS)
+
+docker:
+	docker image build -t push_swap . && docker run --name push_swap -it push_swap
+
+dockrm:
+	docker rm push_swap && docker image rm push_swap

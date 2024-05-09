@@ -1,5 +1,38 @@
 # push_swap
 
+## Installation
+
+
+```shell
+git clone https://github.com/CrispLake/push_swap
+cd push_swap
+make
+```
+
+or create a docker container
+
+```shell
+make docker
+```
+
+remove container and image with
+```shell
+make dockrm
+```
+
+Run with
+```shell
+./push_swap 1 3 2
+```
+
+or with checker
+```shell
+./push_swap 1 3 2 | ./checker 1 3 2
+```
+
+There is also 2 shell scripts in tester folder that will generate and test any amount of numbers
+
+
 ## Goal
 
 In this project the goal was to create a program that takes string of ints as an argument and sorts them with as little operations as possible. You have to use 2 stacks called A and B. The numbers start in the A stack and need to end sorted in the A stack. The program only prints what operations it used. The following operations were allowed:
