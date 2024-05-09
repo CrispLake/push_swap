@@ -29,9 +29,11 @@ SRC =\
 	swap_stack.c\
 	rotate_stack.c\
 	reverse_rotate_stack.c\
-	b_helpers.c
+	b_helpers.c\
+	op_store.c
 
 OBJ = $(addprefix obj/,$(SRC:%.c=%.o))
+DEP := $(OBJ:%.o=%.d)
 
 BSRC =\
 	checker_bonus.c\
@@ -46,8 +48,8 @@ BSRC =\
 BOBJ = $(addprefix obj/,$(BSRC:%.c=%.o))
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
-LDFLAGS = -L libft -lft
+CFLAGS = -Wall -Werror -Wextra -I libft
+LDFLAGS = -L libft -lft -I libft
 
 .PHONY: all clean fclean re bonus
 
@@ -59,9 +61,11 @@ $(LIBFT):
 $(NAME): $(OBJ)
 	$(CC) -o $(NAME) $(OBJ) $(LDFLAGS)
 
+-include $(DEP)
+
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	@$(shell [ ! -d $(@D) ] && mkdir -p $(@D))
-	$(CC) $(CFLAGS) -c $< -o $@ 
+	$(CC) $(CFLAGS) -MMD -c $< -o $@ 
 
 clean:
 	/bin/rm -rf $(OBJDIR)

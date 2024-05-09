@@ -4,7 +4,7 @@ ARGC=$#
 MIN_ARGC="3"
 
 if [ $ARGC -ne $MIN_ARGC ]; then
-    echo Expected 3 arguments, how many times to run and min and max.
+    echo Expected 3 arguments, times to run, min and max.
     exit;
 fi
 
@@ -16,3 +16,16 @@ done
 
 echo "avg of $1 tests between $2 and $3" >> avgs
 echo $(($total / $1)) >> avgs
+
+fails=''
+for (( i=1; i<=$1; i++ ))
+do
+    fails+=$(./test $2 $3 | grep KO)
+done
+
+if [ -z "$fails" ]; then
+    echo "OK" >> avgs
+else
+    echo "$fails" >> avgs
+fi
+

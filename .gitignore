@@ -6,3 +6,4 @@ tester/avgs
 visualizer
 run_visual.sh
 checker
+obj/

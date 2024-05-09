@@ -12,37 +12,37 @@
 
 #include "push_swap.h"
 
-void	push_nb_on_top(int *ptr, int nb, int size)
+void    push_nb_on_top(int *ptr, int nb, int size)
 {
-	while (size)
-	{
-		ptr[size] = ptr[size - 1];
-		size--;
-	}
-	ptr[size] = nb;
+    while (size)
+    {
+        ptr[size] = ptr[size - 1];
+        size--;
+    }
+    ptr[size] = nb;
 }
 
-void	remove_nb_on_top(int *ptr, int size)
+void    remove_nb_on_top(int *ptr, int size)
 {
-	int	i;
+    int    i;
 
-	i = 0;
-	while (i < size - 1)
-	{
-		ptr[i] = ptr[i + 1];
-		i++;
-	}
+    i = 0;
+    while (i < size - 1)
+    {
+        ptr[i] = ptr[i + 1];
+        i++;
+    }
 }
 
-void	push_nb_on_bottom(int *ptr, int nb, int size)
+void    push_nb_on_bottom(int *ptr, int nb, int size)
 {
-	int	i;
+    int    i;
 
-	i = 0;
-	while (i < size - 1)
-	{
-		ptr[i] = ptr[i + 1];
-		i++;
-	}
-	ptr[i] = nb;
+    i = 0;
+    while (i < size - 1)
+    {
+        ptr[i] = ptr[i + 1];
+        i++;
+    }
+    ptr[i] = nb;
 }

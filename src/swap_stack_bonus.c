@@ -12,33 +12,33 @@
 
 #include "push_swap.h"
 
-void	swap_stack(int *ptr)
+void    swap_stack(int *ptr)
 {
-	int	save;
+    int    save;
 
-	save = ptr[0];
-	ptr[0] = ptr[1];
-	ptr[1] = save;
+    save = ptr[0];
+    ptr[0] = ptr[1];
+    ptr[1] = save;
 }
 
-void	bsa(t_vars *s_vars)
+void    bsa(t_vars *s_vars)
 {
-	if (s_vars->size_a < 2)
-		return ;
-	swap_stack(s_vars->a);
+    if (s_vars->size_a < 2)
+        return ;
+    swap_stack(s_vars->a);
 }
 
-void	bsb(t_vars *s_vars)
+void    bsb(t_vars *s_vars)
 {
-	if (s_vars->size_b < 2)
-		return ;
-	swap_stack(s_vars->b);
+    if (s_vars->size_b < 2)
+        return ;
+    swap_stack(s_vars->b);
 }
 
-void	bss(t_vars *s_vars)
+void    bss(t_vars *s_vars)
 {
-	if (s_vars->size_a < 2 || s_vars->size_b < 2)
-		return ;
-	swap_stack(s_vars->a);
-	swap_stack(s_vars->b);
+    if (s_vars->size_a < 2 || s_vars->size_b < 2)
+        return ;
+    swap_stack(s_vars->a);
+    swap_stack(s_vars->b);
 }

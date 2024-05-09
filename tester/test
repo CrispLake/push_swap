@@ -43,6 +43,6 @@ cat ops.log | ./checker $SEQ
 
 if [[ $OPCOUNT -gt 5500 ]]; then
     echo $OPCOUNT >> error
-	echo $SEQ >> error
+    echo $SEQ >> error
 fi
 
