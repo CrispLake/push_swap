@@ -3,7 +3,10 @@
 
 #include "libft.h"
 
-enum ops
+#define TRUE 1
+#define FALSE 0
+
+typedef enum op
 {
     SA,
     SB,
@@ -15,20 +18,23 @@ enum ops
     RR,
     RRA,
     RRB,
-    RRR
-};
+    RRR,
+    END
+} ops;
 
 typedef struct s_operations
 {
-    char *op;
+    ops *op;
     int opcount;
     struct s_operations *next;
 }    operations;
 
 
 operations *new_op_store();
-_Bool add_op(operations* head, enum ops);
-_Bool add_wrap(operations* head, enum ops);
-void print_ops(operations* head);
+_Bool add_op(operations *head, ops o);
+_Bool add_wrap(operations *head, ops o);
+void print_ops(operations *head);
+_Bool optimize_ops(operations **head);
+void free_ops(operations *head);
 
 #endif

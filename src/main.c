@@ -107,7 +107,10 @@ int    main(int argc, char **argv)
     sort_a(&s_vars);
     storage_size = sort_stack_b(&s_vars);
     push_all(&s_vars, storage_size);
-    print_ops(s_vars.ops_head);
+    optimize_ops(&s_vars.ops_head);
+    if (s_vars.ops_head)
+        print_ops(s_vars.ops_head);
+    free_ops(s_vars.ops_head);
     free(s_vars.data);
     return (0);
 }

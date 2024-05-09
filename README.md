@@ -112,3 +112,7 @@ Then everytime we are looking for the biggest or the second biggest in `B` we ha
 If the biggest is at the bottom of `A` we can just reverse rotate `A` and if it is the second biggest we can just move the biggest to `A` and then reverse rotate `A`.
 
 And if `B` is empty check that the storage is empty. If not just reverse rotate all numbers from storage.
+
+## Second optimization 
+
+Instead of writing the moves to stdout, saving them and switching all the single operations to double operations for example sa,sb -> ss and then printing them
