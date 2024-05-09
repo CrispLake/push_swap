@@ -14,25 +14,27 @@
 
 void    command(t_vars *s_vars, int operation)
 {
-    if (operation == SA)
+    if (operation == BSA)
         bsa(s_vars);
-    else if (operation == SB)
+    else if (operation == BSB)
         bsb(s_vars);
-    else if (operation == PA)
+    else if (operation == BSS)
+        bss(s_vars);
+    else if (operation == BPA)
         bpa(s_vars);
-    else if (operation == PB)
+    else if (operation == BPB)
         bpb(s_vars);
-    else if (operation == RA)
+    else if (operation == BRA)
         bra(s_vars);
-    else if (operation == RB)
+    else if (operation == BRB)
         brb(s_vars);
-    else if (operation == RR)
+    else if (operation == BRR)
         brr(s_vars);
-    else if (operation == RRA)
+    else if (operation == BRRA)
         brra(s_vars);
-    else if (operation == RRB)
+    else if (operation == BRRB)
         brrb(s_vars);
-    else if (operation == RRR)
+    else if (operation == BRRR)
         brrr(s_vars);
 }
 

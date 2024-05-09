@@ -25,20 +25,20 @@ int    check_rotate(char *line)
     if (line[2] == '\n')
     {
         if (line[1] == 'a')
-            return (RA);
+            return (BRA);
         if (line[1] == 'b')
-            return (RB);
+            return (BRB);
         if (line[1] == 'r')
-            return (RR);
+            return (BRR);
     }
     else if (line[3] == '\n')
     {
         if (line[1] == 'r' && line[2] == 'a')
-            return (RRA);
+            return (BRRA);
         if (line[1] == 'r' && line[2] == 'b')
-            return (RRB);
+            return (BRRB);
         if (line[1] == 'r' && line[2] == 'r')
-            return (RRR);
+            return (BRRR);
     }
     return (0);
 }
@@ -48,18 +48,18 @@ int    check_operation(char *line)
     if (line[0] == 's')
     {
         if (line[1] == 'a' && line[2] == '\n')
-            return (SA);
+            return (BSA);
         if (line[1] == 'b' && line[2] == '\n')
-            return (SB);
+            return (BSB);
         if (line[1] == 's' && line[2] == '\n')
-            return (SS);
+            return (BSS);
     }
     else if (line[0] == 'p')
     {
         if (line[1] == 'a' && line[2] == '\n')
-            return (PA);
+            return (BPA);
         if (line[1] == 'b' && line[2] == '\n')
-            return (PB);
+            return (BPB);
     }
     else if (line[0] == 'r')
         return (check_rotate(line));

@@ -25,17 +25,17 @@ typedef struct s_vec
 
 enum e_operations
 {
-    SA = 1,
-    SB = 2,
-    SS = 3,
-    PA = 4,
-    PB = 5,
-    RA = 6,
-    RB = 7,
-    RR = 8,
-    RRA = 9,
-    RRB = 10,
-    RRR = 11
+    BSA = 1,
+    BSB = 2,
+    BSS = 3,
+    BPA = 4,
+    BPB = 5,
+    BRA = 6,
+    BRB = 7,
+    BRR = 8,
+    BRRA = 9,
+    BRRB = 10,
+    BRRR = 11
 };
 
 void    bsa(t_vars *s_vars);
